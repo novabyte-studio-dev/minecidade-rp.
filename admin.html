@@ -76,6 +76,19 @@
 </ol>
 <p class="muted">Se outra pessoa não tiver permissão para editar seu repositório, o GitHub não deixará salvar diretamente.</p>
 <h3>Prévia do arquivo</h3><pre id="jsonPreview" aria-label="Conteúdo a ser salvo"></pre></section>
+<section class="box" id="changeCode"><div class="eyebrow">CONFIGURAÇÃO DE ACESSO</div><h2>Alterar o código de entrada</h2>
+<p>Você pode trocar o código quando quiser. O novo código só passa a valer depois que você salvar a alteração no GitHub. <strong>A edição pública dos valores continuará exigindo uma conta GitHub autorizada.</strong></p>
+<div class="form-field" style="max-width:460px"><label for="newAccessCode">Novo código (recomendamos uma frase longa)</label><input type="password" id="newAccessCode" autocomplete="new-password" minlength="8" placeholder="Digite um novo código"></div>
+<div class="buttons"><button class="btn" type="button" id="makeHash">Gerar código de configuração</button><button class="btn alt" type="button" id="copyHash" disabled>Copiar código de configuração</button></div>
+<p class="muted" id="hashStatus" role="status">Apenas o resultado criptográfico será copiado; o texto do novo código não será publicado.</p>
+<pre id="hashPreview" hidden></pre>
+<ol>
+<li>Digite o novo código e toque em <b>Gerar código de configuração</b>.</li>
+<li>Copie o resultado e abra <a href="https://github.com/novabyte-studio-dev/minecidade-rp./edit/main/admin.html" target="_blank" rel="noopener noreferrer" style="color:var(--green);font-weight:800">Editar admin.html no GitHub ↗</a>.</li>
+<li>Procure <code>CODE_DIGEST</code> no arquivo e substitua apenas os caracteres entre aspas pelo resultado copiado.</li>
+<li>Toque em <b>Commit changes</b> e aguarde o GitHub Pages publicar.</li>
+</ol>
+<p class="muted">Observação: como o GitHub Pages é público, este código só esconde a tela de edição. Ele não substitui autenticação segura com servidor próprio.</p></section>
 <section class="box"><div class="eyebrow">LEMBRETE DE SEGURANÇA</div><h2>Comprovantes não ficam públicos</h2>
 <p>Não salve nomes, telefones de apoiadores, prints de Pix, senhas, dados bancários, documentos ou códigos de autenticação no GitHub. Guarde a conferência de cada recebimento em local privado e mantenha um responsável adulto acompanhando os pagamentos.</p>
 <p>Benefícios do grupo e do beta são entregues manualmente, depois da confirmação e conforme as condições anunciadas.</p></section>
@@ -149,6 +162,28 @@ document.getElementById("addLivre").addEventListener("click",()=>{
 });
 document.getElementById("undo").addEventListener("click",()=>{const old=hist.pop();if(!old)return;ids.forEach(id=>document.getElementById(id).value=old[id]);redraw();});
 document.getElementById("copy").addEventListener("click",async()=>{const s=payload();try{await navigator.clipboard.writeText(s);document.getElementById("copyStatus").textContent="✓ Atualização copiada! Abra o GitHub, cole no arquivo e confirme o commit.";}catch(e){document.getElementById("copyStatus").textContent="Não foi possível copiar automaticamente. Selecione e copie o texto da prévia abaixo."; }});
+// Gera um novo verificador sem escrever o novo código em texto claro no GitHub.
+let generatedHash="";
+document.getElementById("makeHash").addEventListener("click",async()=>{
+ const el=document.getElementById("newAccessCode");
+ const status=document.getElementById("hashStatus");
+ const code=el.value;
+ if(code.length<8){status.textContent="Escolha um código com pelo menos 8 caracteres.";el.focus();return;}
+ try{
+  const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(code));
+  generatedHash=Array.from(new Uint8Array(digest),v=>v.toString(16).padStart(2,"0")).join("");
+  document.getElementById("hashPreview").textContent=generatedHash;
+  document.getElementById("hashPreview").hidden=false;
+  document.getElementById("copyHash").disabled=false;
+  el.value="";
+  status.textContent="Gerado! Copie o resultado e substitua a sequência entre aspas depois de CODE_DIGEST no editor do GitHub.";
+ }catch(err){status.textContent="Este navegador não conseguiu gerar o código. Abra pelo endereço HTTPS do site.";}
+});
+document.getElementById("copyHash").addEventListener("click",async()=>{
+ if(!generatedHash)return;
+ try{await navigator.clipboard.writeText(generatedHash);document.getElementById("hashStatus").textContent="✓ Código de configuração copiado! Agora cole no GitHub e confirme o commit.";}
+ catch(err){document.getElementById("hashStatus").textContent="Copie manualmente o resultado exibido acima.";}
+});
 document.getElementById("editGitHub").href=REPO;
 fetch("./data/campanha.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{config={...config,...d};fill();}).catch(fill);
 fill();
