@@ -54,6 +54,7 @@ footer{border-top:1px solid var(--line);padding:29px 0 48px;color:var(--muted);f
 .mini-chip{display:inline-block;margin:4px 6px 6px 0;font-size:11px;color:#d9f9e2;background:#26503c;border-radius:20px;padding:6px 11px}
 .section-space{margin:26px 0}
 footer .owner-link{border:1px solid #547967;border-radius:10px;padding:9px 12px;font-weight:800;display:inline-block;color:#baf6bd}
+.custom-option{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px}.custom-option span{margin:0}.custom-option small{flex-basis:100%}.custom-field{padding:18px;margin-top:12px;border-radius:15px;background:#113529;border:1px solid #629476}.custom-field label{font-size:13px;font-weight:800;color:#dff9e3;display:block;margin-bottom:8px}.custom-field input{max-width:270px}.support-option:focus-visible,.btn:focus-visible,.inp:focus-visible{outline:3px solid #b3ff82;outline-offset:3px}[hidden]{display:none !important}
 @media(max-width:850px){.navlinks a:not(.owner-link){display:none}.feature-grid,.device-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.phone-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.feature-grid,.device-grid,.soft-grid,.support-options,.instructions{grid-template-columns:1fr}.navlinks{gap:9px}.navlinks .owner-link{font-size:11px}.phone-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.phone{padding:14px}.phone h3{font-size:16px}.section-title{font-size:26px}.pix-line code{font-size:16px}}
 
@@ -136,11 +137,17 @@ footer .owner-link{border:1px solid #547967;border-radius:10px;padding:9px 12px;
 
 
 <section class="panel section-space" id="apoios"><div class="eyebrow">APOIE O PROJETO</div><h2 class="section-title">Ajude a construir a MineCidade RP</h2>
-<p class="section-lead">Escolha seu apoio, faça o Pix e envie o comprovante pelo WhatsApp. O responsável vai conferir se o pagamento realmente chegou antes de atualizar a arrecadação ou entregar os benefícios.</p>
+<p class="section-lead">Escolha um dos planos ou contribua com qualquer valor, sem precisar de plano. Faça o Pix e envie o comprovante pelo WhatsApp. O responsável confere o recebimento antes de atualizar a arrecadação ou entregar os benefícios.</p>
 <div class="support-options" role="group" aria-label="Escolha seu apoio">
 <button type="button" class="support-option selected" data-tier="5" aria-pressed="true"><strong>R$ 5</strong><span>💚 Apoio livre</span><small>Apoie o desenvolvimento sem benefícios exclusivos.</small></button>
 <button type="button" class="support-option" data-tier="10" aria-pressed="false"><strong>R$ 10</strong><span>🔐 Bastidores</span><small>Grupo privado para acompanhar as novidades e o progresso.</small></button>
 <button type="button" class="support-option" data-tier="20" aria-pressed="false"><strong>🎮 R$ 20</strong><span>Grupo + beta</span><small>Grupo privado e acesso ao beta quando estiver disponível; sujeito às condições de entrega.</small></button>
+<button type="button" class="support-option custom-option" data-tier="custom" aria-pressed="false"><strong>✏️ Valor livre</strong><span>Escolher quanto quero ajudar</span><small>Você define a quantia. É uma contribuição voluntária, sem plano ou recompensa.</small></button>
+</div>
+<div class="custom-field" id="customField" hidden>
+<label for="customAmount">Quanto você deseja contribuir? (R$)</label>
+<input class="inp" id="customAmount" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="Ex.: 7,50" aria-describedby="customError">
+<p id="customError" class="note" role="status">Escolha um valor acima de R$ 0,00, com até duas casas decimais. Sem benefícios vinculados.</p>
 </div>
 <div class="payment-box" id="pagamento">
 <span class="reward-label" id="chosenName">Apoio selecionado: R$ 5,00</span>
@@ -154,7 +161,7 @@ footer .owner-link{border:1px solid #547967;border-radius:10px;padding:9px 12px;
 <p class="note" id="whatsappLabel"></p>
 </div>
 <div class="instructions">
-<div class="step-card"><strong>1. Escolha o valor</strong><p>R$ 5, R$ 10 ou R$ 20. Confira o que cada faixa oferece.</p></div>
+<div class="step-card"><strong>1. Escolha o valor</strong><p>Selecione R$ 5, R$ 10, R$ 20 ou digite qualquer outro valor como apoio voluntário sem benefícios.</p></div>
 <div class="step-card"><strong>2. Faça o Pix</strong><p>Copie a chave e confira os dados do recebedor no aplicativo bancário.</p></div>
 <div class="step-card"><strong>3. Envie e aguarde</strong><p>Envie o comprovante por WhatsApp. A confirmação e a entrega das recompensas são manuais.</p></div>
 </div>
@@ -186,22 +193,43 @@ function draw(){
   document.querySelector("#whatsappLabel").textContent=ph?"WhatsApp de contato: +"+(ph.startsWith("55")?ph:"55"+ph):"WhatsApp não configurado.";
   updateWhatsApp();
 }
+function selectedAmount(){
+ if(currentTier!=="custom")return currentTier;
+ const input=document.querySelector("#customAmount");
+ const raw=input.value.trim(),n=Number(raw);
+ if(!raw||!Number.isFinite(n)||n<0.01||!Number.isSafeInteger(Math.round(n*100))||Math.abs(n*100-Math.round(n*100))>1e-6)return null;
+ return Math.round(n*100)/100;
+}
 function updateWhatsApp(){
- const amount=currentTier,nick=document.querySelector("#nick").value.trim();
- const lines=["Olá! Quero confirmar meu apoio à MineCidade RP.","Valor do apoio: "+fmt(amount),"Plano: "+({5:"Apoio livre",10:"Grupo dos bastidores",20:"Grupo dos bastidores + acesso futuro ao beta"}[amount]||"Apoio"),nick?"Meu nick: "+nick:"Vou informar meu nick do Minecraft.","Vou anexar o comprovante Pix nesta conversa. Por favor, confira o recebimento."];
+ const amount=selectedAmount(),isCustom=currentTier==="custom";
+ const nick=document.querySelector("#nick").value.trim();
+ const label=document.querySelector("#chosenName");
+ label.textContent=amount===null?"Apoio livre: digite um valor válido":"Apoio selecionado: "+fmt(amount)+(isCustom?" (sem plano ou benefícios)":"");
+ const error=document.querySelector("#customError");
+ error.textContent=isCustom&&amount===null?"Digite um valor acima de R$ 0,00, usando no máximo duas casas decimais.":"Este apoio é voluntário e não inclui benefícios dos planos.";
+ const benefit=isCustom?"Contribuição voluntária, sem plano ou recompensa":({5:"Apoio livre, sem recompensa",10:"Grupo dos bastidores",20:"Grupo dos bastidores + acesso futuro ao beta"}[currentTier]||"Apoio");
+ const lines=["Olá! Quero confirmar meu apoio à MineCidade RP.","Valor do apoio: "+fmt(amount),"Modalidade: "+benefit,nick?"Meu nick: "+nick:"Vou informar meu nick do Minecraft.","Vou anexar o comprovante Pix nesta conversa. Por favor, confira o recebimento."];
  const digits=String(campaign.whatsapp||"").replace(/\D/g,"");
  const number=digits.startsWith("55")?digits:"55"+digits;
+ const valid=amount!==null&&number.length>=12;
  const btn=document.querySelector("#enviarComprovante");
- btn.href=number.length>=12?"https://wa.me/"+number+"?text="+encodeURIComponent(lines.join("\n")):"#pagamento";
- btn.setAttribute("aria-disabled",number.length>=12?"false":"true");
+ btn.href=valid?"https://wa.me/"+number+"?text="+encodeURIComponent(lines.join("\n")):"#pagamento";
+ btn.setAttribute("aria-disabled",valid?"false":"true");
+ btn.style.opacity=valid?"1":".55";
 }
 document.querySelectorAll(".support-option").forEach(btn=>btn.addEventListener("click",()=>{
- currentTier=Number(btn.dataset.tier);
+ currentTier=btn.dataset.tier==="custom"?"custom":Number(btn.dataset.tier);
  document.querySelectorAll(".support-option").forEach(b=>{const on=b===btn;b.classList.toggle("selected",on);b.setAttribute("aria-pressed",String(on))});
- document.querySelector("#chosenName").textContent="Apoio selecionado: "+fmt(currentTier);
+ document.querySelector("#customField").hidden=currentTier!=="custom";
  updateWhatsApp();
- document.querySelector("#pagamento").scrollIntoView({behavior:"smooth",block:"center"});
+ if(currentTier==="custom")document.querySelector("#customAmount").focus();
+ else document.querySelector("#pagamento").scrollIntoView({behavior:"smooth",block:"center"});
 }));
+document.querySelector("#customAmount").addEventListener("input",updateWhatsApp);
+document.querySelector("#enviarComprovante").addEventListener("click",e=>{
+ if(selectedAmount()===null){e.preventDefault();document.querySelector("#customAmount").focus();return;}
+ if(document.querySelector("#enviarComprovante").getAttribute("aria-disabled")==="true")e.preventDefault();
+});
 document.querySelector("#nick").addEventListener("input",updateWhatsApp);
 document.querySelector("#copiarPix").addEventListener("click",async()=>{
  const key=String(campaign.pix||"").trim();if(!key)return;
