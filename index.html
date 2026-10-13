@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08171f">
+<meta name="description" content="MineCidade RP — acompanhe o desenvolvimento de uma cidade RP para Minecraft Java e Bedrock.">
+<title>MineCidade RP — Sua cidade, sua história</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@600;800&family=Inter:wght@400;600;700;800&display=swap');
+:root{color-scheme:dark;--bg:#09131c;--panel:#112330;--line:#284b4a;--green:#a5f966;--ink:#f3fcff;--muted:#b0c9d0}*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 85% 0%,#194a42 0%,transparent 37%),linear-gradient(160deg,#0b1522,#09131c);color:var(--ink);font:15px/1.65 Inter,Arial,sans-serif}
+.wrap{width:min(1100px,calc(100% - 36px));margin:auto}a{color:inherit;text-decoration:none}header{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:23px 0}header b,.brand{font:800 24px Oxanium,sans-serif;letter-spacing:.3px}header a{font-weight:700;color:var(--green)}
+.hero{margin:24px 0;padding:54px 45px;border-radius:27px;min-height:355px;background:radial-gradient(circle at 85% 20%,#246a57,transparent 42%),linear-gradient(120deg,#142b31,#07151e);border:1px solid #42765e;display:flex;flex-direction:column;justify-content:center}
+.tag{display:inline-block;align-self:flex-start;border:1px solid #7cdd9290;border-radius:30px;color:#c2ffc6;background:#1e513a;padding:6px 14px;font-size:12px;font-weight:800;text-transform:uppercase}
+h1,h2,h3{font-family:Oxanium,Inter,sans-serif}h1{font-size:clamp(40px,7vw,75px);line-height:1;letter-spacing:-2px;margin:20px 0 14px}h1 span,.lime{color:var(--green)}p{margin:0 0 18px;color:var(--muted)}.hero p{max-width:660px;color:#e5f3ef}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}.btn{display:inline-block;padding:13px 20px;background:var(--green);border-radius:12px;color:#092216;font-weight:800}.btn.alt{background:#183333;color:#dbffe9;border:1px solid #578d6a}
+.grid{display:grid;grid-template-columns:1.3fr .85fr;gap:22px;margin-bottom:23px}.panel{background:linear-gradient(160deg,#112734,#0d1d29);border:1px solid var(--line);border-radius:22px;padding:29px}h2{font-size:27px;line-height:1.15;margin:0 0 13px}h3{margin:8px 0;font-size:18px}.eyebrow{color:var(--green);font-weight:800;letter-spacing:1.1px;text-transform:uppercase;font-size:11px;margin-bottom:8px}
+.kpi{font:800 36px Oxanium,sans-serif}.bar{margin:19px 0 10px;height:15px;border-radius:99px;background:#223943;overflow:hidden}.bar>span{display:block;width:0%;height:100%;background:var(--green)}
+.row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}.muted{color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 0}.stat{padding:16px;border:1px solid #355052;border-radius:12px;background:#0c202b}.stat strong{display:block;font:800 22px Oxanium,sans-serif}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0 26px}.mini{background:#112634;border:1px solid var(--line);border-radius:18px;padding:21px}.price{font:800 30px Oxanium,sans-serif;color:var(--green)}.alert{border-left:4px solid var(--green);background:#18342d;padding:17px 21px;border-radius:8px;color:#e4ffe9;margin:22px 0 34px}
+footer{border-top:1px solid var(--line);padding:29px 0 48px;color:var(--muted);font-size:12px}
+@media(max-width:750px){.grid,.cards{grid-template-columns:1fr}.hero{padding:38px 25px;min-height:320px}.panel{padding:22px}header b{font-size:20px}}
+</style>
+</head>
+<body><div class="wrap">
+<header><b>🏙️ MINECIDADE RP</b><a href="#campanha">Acompanhar campanha ↓</a></header>
+<main>
+<section class="hero"><span class="tag">Projeto em desenvolvimento</span><h1>UMA CIDADE.<br><span>MIL HISTÓRIAS.</span></h1>
+<p>Estamos criando uma experiência de roleplay no Minecraft, com cidade moderna, comércio, economia, imóveis e vida em comunidade. Tudo será desenvolvido em etapas, com testes antes do lançamento.</p>
+<div class="actions"><a class="btn" href="#projeto">Conhecer o projeto</a><a class="btn alt" href="#campanha">Ver meta de apoio</a></div>
+</section>
+<div class="grid">
+<section class="panel" id="projeto"><div class="eyebrow">Nosso planejamento</div><h2>Construa sua história</h2>
+<p>Uma cidade com ruas, casas, prefeitura, banco, lojas, veículos e empregos. Queremos compatibilidade entre Minecraft Java e Bedrock.</p>
+<p>MinePhone, MineOS, MineNet e os sistemas de voz e pagamentos fictícios são ideias em estudo — <b>não estão disponíveis ainda</b>.</p>
+<p><b>Meta de lançamento beta:</b> 20 de março de 2027, às 16h (horário de Brasília), apenas como previsão sujeita a alterações.</p></section>
+<aside class="panel" id="campanha"><div class="eyebrow">Meta de apoio</div><div class="kpi" id="arrecadado">R$ 0,00</div><div class="muted">arrecadados e confirmados</div>
+<div class="bar" role="progressbar" aria-label="Arrecadação" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barra"><span id="progresso"></span></div>
+<div class="row muted"><b id="percentual">0% da meta</b><b>de R$ 200,00</b></div>
+<div class="stats"><div class="stat"><strong id="apoiadores">0</strong><span class="muted">apoiadores</span></div><div class="stat"><strong id="faltam">—</strong><span class="muted">dias até 20/03/2027</span></div></div>
+<p class="muted" style="margin-top:15px">A meta pode ser ultrapassada. O desenvolvimento continua mesmo após atingir 100%.</p></aside>
+</div>
+<section class="panel"><div class="eyebrow">Recompensas planejadas</div><h2>Formas de apoiar</h2><p>Os pagamentos ainda não estão abertos nesta versão de apresentação. O envio seguro de comprovantes e o painel privado de aprovação serão ativados apenas depois que a hospedagem do servidor estiver preparada.</p>
+<div class="cards"><article class="mini"><div class="price">R$ 5</div><h3>Apoio livre</h3><p>Contribuição voluntária sem benefícios.</p></article>
+<article class="mini"><div class="price">R$ 10</div><h3>Bastidores</h3><p>Acesso ao grupo privado de novidades, após confirmação manual.</p></article>
+<article class="mini"><div class="price">R$ 20</div><h3>Grupo + beta</h3><p>Grupo privado e beta futuro, quando disponível, conforme condições anunciadas.</p></article></div></section>
+<div class="alert"><strong>🔒 Publicação inicial:</strong> esta é uma apresentação pública, não uma página de pagamento ativa. Nunca envie comprovantes, senhas ou dados bancários aqui. O servidor ainda está sendo desenvolvido e não há garantia de lançamento na data prevista.</div>
+</main><footer>© 2026 MineCidade RP — Projeto independente, sem afiliação com Mojang ou Microsoft.</footer></div>
+<script>
+const CAMPANHA={meta:200,arrecadado:0,apoiadores:0,prazo:"2027-03-20"};
+const fmt=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const percentual=CAMPANHA.arrecadado/CAMPANHA.meta*100;
+document.querySelector("#arrecadado").textContent=fmt(CAMPANHA.arrecadado);
+document.querySelector("#percentual").textContent=percentual.toLocaleString("pt-BR",{maximumFractionDigits:1})+"% da meta";
+document.querySelector("#progresso").style.width=Math.min(100,percentual)+"%";
+document.querySelector("#barra").setAttribute("aria-valuenow",String(Math.round(Math.min(100,percentual))));
+document.querySelector("#apoiadores").textContent=String(CAMPANHA.apoiadores);
+const d=new Date(CAMPANHA.prazo+"T23:59:59-03:00"),n=new Date();
+document.querySelector("#faltam").textContent=n>d?"Encerrado":String(Math.ceil((d-n)/86400000));
+</script>
+</body></html>
