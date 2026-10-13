@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1a22">
+<title>Área do dono • MineCidade RP</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@600;800&family=Inter:wght@400;600;700;800&display=swap');
+:root{color-scheme:dark;--green:#a5f966;--line:#345a54;--muted:#afc8ce}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#194a42 0%,transparent 36%),#09131c;color:#f3fcff;font:15px/1.6 Inter,Arial,sans-serif}a{color:inherit}header,main,footer{width:min(910px,calc(100% - 28px));margin:auto}header{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:20px 0}header a{color:var(--green);font-weight:800;text-decoration:none}h1,h2,h3{font-family:Oxanium,Arial,sans-serif;line-height:1.2}h1{font-size:clamp(28px,6vw,47px);margin:8px 0 12px}h1 span{color:var(--green)}h2{font-size:23px;margin:0 0 13px}p{color:var(--muted)}.box{border:1px solid var(--line);border-radius:21px;padding:25px;margin:19px 0;background:#102330}.eyebrow{color:var(--green);font-size:11px;letter-spacing:1px;font-weight:800}.alert{padding:15px;background:#193b31;border:1px solid #5a8e6a;border-radius:14px;font-size:13px;color:#e4f7e7}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.form-field label{display:block;font-size:12px;color:var(--muted);font-weight:800;margin-bottom:7px}.form-field input{width:100%;border:1px solid #517167;border-radius:11px;background:#071821;color:white;padding:12px 13px;font:inherit}.btn{border:0;border-radius:12px;padding:13px 18px;background:var(--green);font-weight:800;color:#0b271b;cursor:pointer;font:800 14px Inter,Arial,sans-serif;display:inline-block;text-decoration:none}.btn.alt{background:#23473a;border:1px solid #609273;color:#deffdf}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.muted{font-size:12px;color:var(--muted)}.money{font:800 32px Oxanium,sans-serif;color:var(--green)}.step{padding:15px;border-radius:12px;background:#0b2029;border:1px solid #355453;margin:12px 0}code,pre{word-break:break-word;color:#dcffdd}pre{font-size:12px;white-space:pre-wrap;background:#061821;border:1px solid #234039;padding:15px;border-radius:12px;max-height:300px;overflow:auto}.tally{display:flex;flex-wrap:wrap;gap:8px}.tally button{border:1px solid #6b9b75;border-radius:10px;background:#17402c;color:#e1ffe1;cursor:pointer;padding:12px 15px;font-weight:800}footer{padding:24px 0 40px;color:var(--muted);font-size:12px}strong{color:#f0fff1}ol{padding-left:22px}li{margin:10px 0}@media(max-width:600px){.grid{grid-template-columns:1fr}.box{padding:20px}}
+</style></head>
+<body>
+<header><strong>🏙️ MINECIDADE RP</strong><a href="./index.html">← Voltar ao site</a></header>
+<main>
+<div class="eyebrow">CONTROLE DA CAMPANHA</div><h1>Área do <span>dono</span></h1>
+<p>Registre apenas os apoios confirmados no PicPay. Esta página é um editor local dos dados públicos da arrecadação; o salvamento é feito com o login do seu GitHub.</p>
+<div class="alert"><b>🔐 Como funciona o acesso?</b> O GitHub verifica sua conta e só permite salvar no repositório se você tiver permissão. Esta página <b>não pede nem armazena senhas</b>. Mesmo que outras pessoas abram este endereço, elas não conseguem modificar os dados oficiais sem acesso ao repositório.</div>
+<section class="box">
+<div class="eyebrow">CAMPANHA PUBLICADA</div><h2>Dados de arrecadação</h2>
+<div class="grid">
+<div class="form-field"><label for="meta">Meta da campanha (R$)</label><input type="number" id="meta" min="1" step="0.01" value="200"></div>
+<div class="form-field"><label for="arrecadado">Total confirmado no banco (R$)</label><input type="number" id="arrecadado" min="0" step="0.01" value="0"></div>
+<div class="form-field"><label for="apoiadores">Número de apoiadores confirmados</label><input type="number" id="apoiadores" min="0" step="1" value="0"></div>
+<div class="form-field"><label for="prazo">Prazo da campanha</label><input type="date" id="prazo" value="2027-03-20"></div>
+</div>
+<p class="muted" style="margin-top:17px">Antes de registrar alguém, confirme no app bancário o valor e o identificador real da transação. Um print sozinho não comprova pagamento.</p>
+<div class="step"><strong>➕ Adicionar apoio já confirmado</strong><p class="muted">Depois de conferir no PicPay, toque no valor recebido. O total e a quantidade de apoiadores serão ajustados nos campos acima.</p>
+<div class="tally"><button type="button" data-add="5">+ R$ 5</button><button type="button" data-add="10">+ R$ 10</button><button type="button" data-add="20">+ R$ 20</button><button type="button" id="undo">Desfazer último</button></div>
+</div>
+<p>Total para publicar: <span class="money" id="preview">R$ 0,00</span> <span class="muted" id="previewPct">0% da meta</span></p>
+<div class="buttons"><button class="btn" id="copy" type="button">📋 Copiar atualização</button><a class="btn alt" id="editGitHub" target="_blank" rel="noopener" href="https://github.com/novabyte-studio-dev/minecidade-rp./edit/main/data/campanha.json">🔑 Entrar com GitHub e salvar ↗</a></div>
+<p class="muted" id="copyStatus" role="status">Clique em “Copiar atualização”, depois abra “Entrar com GitHub e salvar”.</p>
+</section>
+<section class="box"><div class="eyebrow">COMO PUBLICAR PELO CELULAR</div><h2>Salvar os valores atualizados</h2>
+<ol>
+<li>Confira o comprovante <strong>no PicPay</strong> e confirme o recebimento.</li>
+<li>Adicione o valor usando os botões acima ou corrija os números manualmente.</li>
+<li>Toque em <strong>Copiar atualização</strong>.</li>
+<li>Toque em <strong>Entrar com GitHub e salvar</strong>. Faça login com a conta <strong>novabyte-studio-dev</strong>, se necessário.</li>
+<li>No editor do GitHub, apague o conteúdo de <code>data/campanha.json</code>, cole a atualização e toque em <strong>Commit changes</strong>.</li>
+<li>Aguarde a publicação automática do GitHub Pages. O valor público será atualizado após a nova versão entrar no ar.</li>
+</ol>
+<p class="muted">Se outra pessoa não tiver permissão para editar seu repositório, o GitHub não deixará salvar diretamente.</p>
+<h3>Prévia do arquivo</h3><pre id="jsonPreview" aria-label="Conteúdo a ser salvo"></pre></section>
+<section class="box"><div class="eyebrow">LEMBRETE DE SEGURANÇA</div><h2>Comprovantes não ficam públicos</h2>
+<p>Não salve nomes, telefones de apoiadores, prints de Pix, senhas, dados bancários, documentos ou códigos de autenticação no GitHub. Guarde a conferência de cada recebimento em local privado e mantenha um responsável adulto acompanhando os pagamentos.</p>
+<p>Benefícios do grupo e do beta são entregues manualmente, depois da confirmação e conforme as condições anunciadas.</p></section>
+</main>
+<footer>MineCidade RP · Painel de edição de dados públicos, protegido por permissões de gravação do GitHub.</footer>
+<script>
+const REPO="https://github.com/novabyte-studio-dev/minecidade-rp./edit/main/data/campanha.json";
+let config={projeto:"MineCidade RP",meta:200,arrecadado:0,apoiadores:0,prazo:"2027-03-20",atualizadoEm:"",pix:"94992898196",recebedor:"Ezequiel Lucas",banco:"PicPay",whatsapp:"94991819814",aviso:"Os valores são informados manualmente pelo responsável depois de confirmar cada pagamento no aplicativo bancário. Comprovantes não são enviados ou armazenados neste site."};
+let hist=[];
+const ids=["meta","arrecadado","apoiadores","prazo"];
+const money=n=>Number(n||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+function values(){return {meta:Math.max(1,Number(document.getElementById("meta").value)||200),arrecadado:Math.max(0,Number(document.getElementById("arrecadado").value)||0),apoiadores:Math.max(0,Math.floor(Number(document.getElementById("apoiadores").value)||0)),prazo:document.getElementById("prazo").value||"2027-03-20"};}
+function payload(){return JSON.stringify({...config,...values(),atualizadoEm:new Date().toISOString().slice(0,10)},null,2)+"\n";}
+function redraw(){const v=values();document.getElementById("preview").textContent=money(v.arrecadado);document.getElementById("previewPct").textContent=(v.arrecadado/v.meta*100).toLocaleString("pt-BR",{maximumFractionDigits:1})+"% da meta";document.getElementById("jsonPreview").textContent=payload();}
+function fill(){ids.forEach(id=>document.getElementById(id).value=config[id]??"");redraw();}
+ids.forEach(id=>document.getElementById(id).addEventListener("input",redraw));
+document.querySelectorAll("button[data-add]").forEach(btn=>btn.addEventListener("click",()=>{const v=values();hist.push(v);document.getElementById("arrecadado").value=Number((v.arrecadado+Number(btn.dataset.add)).toFixed(2));document.getElementById("apoiadores").value=v.apoiadores+1;redraw();}));
+document.getElementById("undo").addEventListener("click",()=>{const old=hist.pop();if(!old)return;ids.forEach(id=>document.getElementById(id).value=old[id]);redraw();});
+document.getElementById("copy").addEventListener("click",async()=>{const s=payload();try{await navigator.clipboard.writeText(s);document.getElementById("copyStatus").textContent="✓ Atualização copiada! Abra o GitHub, cole no arquivo e confirme o commit.";}catch(e){document.getElementById("copyStatus").textContent="Não foi possível copiar automaticamente. Selecione e copie o texto da prévia abaixo."; }});
+document.getElementById("editGitHub").href=REPO;
+fetch("./data/campanha.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{config={...config,...d};fill();}).catch(fill);
+fill();
+</script></body></html>
