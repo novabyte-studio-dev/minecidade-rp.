@@ -20,14 +20,51 @@ h1,h2,h3{font-family:Oxanium,Inter,sans-serif}h1{font-size:clamp(40px,7vw,75px);
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0 26px}.mini{background:#112634;border:1px solid var(--line);border-radius:18px;padding:21px}.price{font:800 30px Oxanium,sans-serif;color:var(--green)}.alert{border-left:4px solid var(--green);background:#18342d;padding:17px 21px;border-radius:8px;color:#e4ffe9;margin:22px 0 34px}
 footer{border-top:1px solid var(--line);padding:29px 0 48px;color:var(--muted);font-size:12px}
 @media(max-width:750px){.grid,.cards{grid-template-columns:1fr}.hero{padding:38px 25px;min-height:320px}.panel{padding:22px}header b{font-size:20px}}
+
+/* Novas seções — MineCidade RP */
+.navlinks{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.navlinks a{font-size:12px;font-weight:800;color:#c5ded8}.navlinks a:hover{color:var(--green)}
+.section-title{font-size:32px;margin:0 0 9px}.section-lead{max-width:760px;color:var(--muted)}
+.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 30px}
+.feature-box,.device,.phone,.support-option,.step-card{background:#102633;border:1px solid #345558;border-radius:17px;padding:19px;min-width:0}
+.feature-box b,.device h3{color:#e8ffe5}.feature-box p,.device p,.phone p,.step-card p{font-size:13px;color:var(--muted);margin:6px 0 0;line-height:1.6}
+.feature-icon{font-size:24px;display:block;margin-bottom:9px}
+.device-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:19px 0 26px}
+.device h3{font-size:21px;margin:4px 0 8px}.device .sub{display:block;color:var(--green);font-weight:800;font-size:12px}
+.comp-list{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}.comp-list span{font-size:11px;border:1px solid #44614e;padding:5px 9px;border-radius:40px;color:#e0f2eb}
+.phone-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 24px}
+.phone{padding:17px}.phone .class{font-size:10px;color:var(--green);letter-spacing:1.3px;font-weight:800}.phone h3{font-size:18px;margin:8px 0 0}.phone .net{font-size:12px;color:#a8f7c3;font-weight:800}
+.soft-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:17px 0 28px}
+.soft-grid .feature-box{min-height:135px}
+.reward-label{display:inline-block;background:#213d2e;color:#baff97;border-radius:9px;padding:5px 9px;font-size:11px;font-weight:800}
+.support-options{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}
+.support-option{display:block;text-align:left;width:100%;cursor:pointer;color:inherit;transition:border-color .2s,transform .2s}
+.support-option:hover,.support-option.selected{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+.support-option strong{display:block;color:var(--green);font:800 28px Oxanium,sans-serif}
+.support-option span{display:block;font-weight:800;margin:5px 0}.support-option small{color:var(--muted);line-height:1.5;font-size:12px}
+.payment-box{border-radius:17px;border:1px solid #548671;background:linear-gradient(130deg,#193c30,#0d292e);padding:22px;margin-top:18px}
+.payment-box h3{font-size:20px;margin:0 0 8px}.payment-box p{font-size:13px}
+.pix-line{background:#071e23;border:1px solid #4c7d69;border-radius:11px;padding:12px 15px;font-size:18px;letter-spacing:1px;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.pix-line code{font-size:17px;color:white;font-weight:800}
+.btn.sm{padding:9px 13px;border:0;cursor:pointer;font-size:12px}
+.btn.wa{background:#37ce79;color:#082718;text-align:center;display:inline-flex;align-items:center;justify-content:center}
+.input-label{display:block;font-weight:700;font-size:12px;color:#b4d6d1;margin:17px 0 5px}
+.inp{padding:12px 14px;border-radius:11px;background:#091c28;color:#fff;border:1px solid #4a6b71;width:100%;max-width:420px;font:inherit}
+.instructions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.step-card strong{display:block;color:var(--green);font-size:14px}
+.note{font-size:12px;color:#bfdbc9;margin-top:12px}
+.mini-chip{display:inline-block;margin:4px 6px 6px 0;font-size:11px;color:#d9f9e2;background:#26503c;border-radius:20px;padding:6px 11px}
+.section-space{margin:26px 0}
+footer .owner-link{border:1px solid #547967;border-radius:10px;padding:9px 12px;font-weight:800;display:inline-block;color:#baf6bd}
+@media(max-width:850px){.navlinks a:not(.owner-link){display:none}.feature-grid,.device-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.phone-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.feature-grid,.device-grid,.soft-grid,.support-options,.instructions{grid-template-columns:1fr}.navlinks{gap:9px}.navlinks .owner-link{font-size:11px}.phone-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.phone{padding:14px}.phone h3{font-size:16px}.section-title{font-size:26px}.pix-line code{font-size:16px}}
+
 </style>
 </head>
 <body><div class="wrap">
-<header><b>🏙️ MINECIDADE RP</b><a href="#campanha">Acompanhar campanha ↓</a></header>
+<header><b>🏙️ MINECIDADE RP</b><div class="navlinks"><a href="#universo">A cidade</a><a href="#tecnologia">Tecnologia</a><a href="#celulares">Celulares</a><a href="#campanha">Apoiar</a><a class="owner-link" href="admin.html" title="Área do dono do servidor">Área do dono ↗</a></div></header>
 <main>
 <section class="hero"><span class="tag">Projeto em desenvolvimento</span><h1>UMA CIDADE.<br><span>MIL HISTÓRIAS.</span></h1>
-<p>Estamos criando uma experiência de roleplay no Minecraft, com cidade moderna, comércio, economia, imóveis e vida em comunidade. Tudo será desenvolvido em etapas, com testes antes do lançamento.</p>
-<div class="actions"><a class="btn" href="#projeto">Conhecer o projeto</a><a class="btn alt" href="#campanha">Ver meta de apoio</a></div>
+<p>Uma cidade inteira dentro do Minecraft: empregos, casas, carros, banco, polícia e uma linha de celulares, computadores e tablets com sistemas próprios. Descubra o que estamos planejando para Java e Bedrock.</p>
+<div class="actions"><a class="btn" href="#campanha">💚 Apoiar a MineCidade RP</a><a class="btn alt" href="#universo">Explorar o universo ↓</a></div><p style="font-size:12px;color:#c4e4d1;margin-top:18px">🟢 Projeto em desenvolvimento &nbsp; · &nbsp; 🎮 Java + Bedrock planejados &nbsp; · &nbsp; 📅 Meta: 20/03/2027</p>
 </section>
 <div class="grid">
 <section class="panel" id="projeto"><div class="eyebrow">Nosso planejamento</div><h2>Construa sua história</h2>
@@ -36,26 +73,145 @@ footer{border-top:1px solid var(--line);padding:29px 0 48px;color:var(--muted);f
 <p><b>Meta de lançamento beta:</b> 20 de março de 2027, às 16h (horário de Brasília), apenas como previsão sujeita a alterações.</p></section>
 <aside class="panel" id="campanha"><div class="eyebrow">Meta de apoio</div><div class="kpi" id="arrecadado">R$ 0,00</div><div class="muted">arrecadados e confirmados</div>
 <div class="bar" role="progressbar" aria-label="Arrecadação" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barra"><span id="progresso"></span></div>
-<div class="row muted"><b id="percentual">0% da meta</b><b>de R$ 200,00</b></div>
-<div class="stats"><div class="stat"><strong id="apoiadores">0</strong><span class="muted">apoiadores</span></div><div class="stat"><strong id="faltam">—</strong><span class="muted">dias até 20/03/2027</span></div></div>
+<div class="row muted"><b id="percentual">0% da meta</b><b id="metaTxt">de R$ 200,00</b></div>
+<div class="stats"><div class="stat"><strong id="apoiadores">0</strong><span class="muted">apoiadores</span></div><div class="stat"><strong id="faltam">—</strong><span class="muted">dias até a meta (20/03/2027)</span></div></div>
 <p class="muted" style="margin-top:15px">A meta pode ser ultrapassada. O desenvolvimento continua mesmo após atingir 100%.</p></aside>
 </div>
-<section class="panel"><div class="eyebrow">Recompensas planejadas</div><h2>Formas de apoiar</h2><p>Os pagamentos ainda não estão abertos nesta versão de apresentação. O envio seguro de comprovantes e o painel privado de aprovação serão ativados apenas depois que a hospedagem do servidor estiver preparada.</p>
-<div class="cards"><article class="mini"><div class="price">R$ 5</div><h3>Apoio livre</h3><p>Contribuição voluntária sem benefícios.</p></article>
-<article class="mini"><div class="price">R$ 10</div><h3>Bastidores</h3><p>Acesso ao grupo privado de novidades, após confirmação manual.</p></article>
-<article class="mini"><div class="price">R$ 20</div><h3>Grupo + beta</h3><p>Grupo privado e beta futuro, quando disponível, conforme condições anunciadas.</p></article></div></section>
-<div class="alert"><strong>🔒 Publicação inicial:</strong> esta é uma apresentação pública, não uma página de pagamento ativa. Nunca envie comprovantes, senhas ou dados bancários aqui. O servidor ainda está sendo desenvolvido e não há garantia de lançamento na data prevista.</div>
-</main><footer>© 2026 MineCidade RP — Projeto independente, sem afiliação com Mojang ou Microsoft.</footer></div>
+
+<section class="section-space" id="universo">
+<div class="eyebrow">ROLEPLAY • CIDADE • ECONOMIA</div><h2 class="section-title">Tudo o que queremos na cidade</h2>
+<p class="section-lead">A MineCidade RP será construída aos poucos. Estes são os sistemas planejados; alguns serão lançados primeiro e outros chegarão em atualizações.</p>
+<div class="feature-grid">
+<article class="feature-box"><span class="feature-icon">🏘️</span><b>Casas e imobiliária</b><p>Casas populares e luxuosas, terrenos públicos, aluguel, compra, venda, financiamento e contratos. Quem começa poderá alugar uma casa simples.</p></article>
+<article class="feature-box"><span class="feature-icon">💼</span><b>Empregos e empresas</b><p>Trabalhos para ganhar dinheiro fictício, abrir lojas, contratar funcionários e administrar empresas, estoques, preços e caixa.</p></article>
+<article class="feature-box"><span class="feature-icon">🏦</span><b>MineBank e MinePix</b><p>Carteira, depósitos, saques, transferências fictícias, extratos, cartões, caixas eletrônicos e maquininhas nas lojas.</p></article>
+<article class="feature-box"><span class="feature-icon">🚔</span><b>Polícia e justiça RP</b><p>Delegacia, patrulha, multas, atendimento de ocorrências, regras de crimes e processos de investigação dentro do jogo.</p></article>
+<article class="feature-box"><span class="feature-icon">🚨</span><b>Segurança e assaltos</b><p>Banco e prefeitura com áreas restritas, sensores, alarmes, câmeras fictícias e guardas. Possíveis assaltos com regras de RP e sem destruir a cidade.</p></article>
+<article class="feature-box"><span class="feature-icon">🚗</span><b>Carros e combustível</b><p>Compra e venda de carros, estacionamento, posto de combustível, abastecimento e oficinas para manutenção de veículos.</p></article>
+<article class="feature-box"><span class="feature-icon">🏥</span><b>Hospital e serviços</b><p>Atendimento de emergência no RP, prefeitura, serviços municipais e profissões ligadas à rotina da cidade.</p></article>
+<article class="feature-box"><span class="feature-icon">🛒</span><b>Comércio de verdade</b><p>Mercadinhos, lojas de eletrônicos, prateleiras, estoque, máquinas de pagamento e pedidos online de itens do jogo.</p></article>
+<article class="feature-box"><span class="feature-icon">🎁</span><b>Kit de boas-vindas</b><p>R$ 1.000 de dinheiro <em>fictício</em>, uma casa popular com aluguel planejado de R$ 10/mês e um Mine Fone A1 básico.</p></article>
+</div></section>
+<section class="section-space panel" id="tecnologia">
+<div class="eyebrow">ECOSSISTEMA DE TECNOLOGIA</div><h2 class="section-title">MineOS para PC, notebook e tablet</h2>
+<p class="section-lead">O <strong>MineOS</strong> é o sistema operacional fictício que pretendemos usar nos computadores da cidade. Ele reúne aplicativos e serviços da MineCidade.</p>
+<div class="device-grid">
+<article class="device"><div class="feature-icon">🖥️</div><span class="sub">MONTÁVEL PEÇA POR PEÇA</span><h3>MinePC</h3><p>PC de mesa: monte o gabinete e escolha placa-mãe, processador, memória RAM, SSD/HD, placa de vídeo, fonte e refrigeração. Peças incompatíveis não funcionam juntas.</p><div class="comp-list"><span>CPU</span><span>GPU</span><span>RAM</span><span>SSD</span><span>Placa-mãe</span><span>Fonte</span></div></article>
+<article class="device"><div class="feature-icon">💻</div><span class="sub">PORTÁTIL</span><h3>MineBook</h3><p>Notebooks com MineOS: bateria, tela, armazenamento e memória configuráveis conforme o modelo. Reparo de tela e bateria na assistência técnica.</p><div class="comp-list"><span>Bateria</span><span>Tela</span><span>RAM</span><span>SSD</span></div></article>
+<article class="device"><div class="feature-icon">📱</div><span class="sub">MINEOS EM TELA SENSÍVEL</span><h3>MineTab</h3><p>Tablet com MineOS e aplicativos de computador adaptados ao toque. Modelos permitem trocar bateria, tela e armazenamento; alguns também aceitam upgrade de RAM.</p><div class="comp-list"><span>Touch</span><span>Bateria</span><span>Tela</span><span>SSD</span></div></article>
+</div>
+<div class="soft-grid">
+<article class="feature-box"><b>🪟 MineOS</b><p>Área de trabalho, arquivos simulados, configurações, armazenamento, desempenho fictício e aplicativos dos equipamentos.</p></article>
+<article class="feature-box"><b>🌐 MineBrowser</b><p>Navegador fictício para páginas e serviços da cidade, incluindo compras e serviços de RP.</p></article>
+<article class="feature-box"><b>📦 MineTech Store</b><p>Uma empresa para loja física, loja online e assistência técnica: peças, notebooks, tablets, celulares, montagem e consertos.</p></article>
+<article class="feature-box"><b>🔧 MineTech Assistência</b><p>Ordens de serviço de RP, diagnóstico, troca de peças, upgrade de RAM e SSD, baterias, telas e reparos simulados.</p></article>
+</div></section>
+<section class="section-space" id="celulares">
+<div class="eyebrow">MINEPHONE • MODELOS FICTÍCIOS</div><h2 class="section-title">Uma linha completa de celulares</h2>
+<p class="section-lead">Do aparelho fraquinho que vem no kit inicial até os modelos topo de linha. As especificações abaixo são <strong>conceitos planejados para o jogo</strong>, não produtos reais.</p>
+<div class="phone-grid">
+<article class="phone"><span class="class">FRACO / ENTRADA</span><h3>Mine Fone A1</h3><span class="net">2G</span><p>1 GB RAM · 2 GB de armazenamento · câmera simples. Modelo do kit inicial.</p></article>
+<article class="phone"><span class="class">FRACO / ENTRADA</span><h3>Mine Fone A2</h3><span class="net">3G</span><p>2 GB RAM · 8 GB de armazenamento · bateria um pouco melhor.</p></article>
+<article class="phone"><span class="class">MÉDIO</span><h3>Mine Fone M5</h3><span class="net">4G</span><p>4 GB RAM · 64 GB · aplicativos comuns e câmera intermediária.</p></article>
+<article class="phone"><span class="class">MÉDIO</span><h3>Mine Fone M5 Plus</h3><span class="net">4G</span><p>6 GB RAM · 128 GB · tela e bateria melhores.</p></article>
+<article class="phone"><span class="class">INTERMEDIÁRIO</span><h3>Mine Fone N12</h3><span class="net">5G</span><p>8 GB RAM · 128 GB · melhor desempenho e conexão.</p></article>
+<article class="phone"><span class="class">INTERMEDIÁRIO</span><h3>Mine Fone N12 Pro</h3><span class="net">5G</span><p>8 GB RAM · 256 GB · câmera e armazenamento superiores.</p></article>
+<article class="phone"><span class="class">FORTE / PREMIUM</span><h3>Mine Ipera 18 Pro</h3><span class="net">5G</span><p>12 GB RAM · 512 GB · recursos premium do MinePhone.</p></article>
+<article class="phone"><span class="class">FORTE / PREMIUM</span><h3>Mine Ipera 18 Pro Max</h3><span class="net">5G</span><p>16 GB RAM · 1 TB · topo de linha da MineCidade.</p></article>
+</div>
+<div class="soft-grid">
+<article class="feature-box"><b>📲 MinePhone</b><p>Contatos, mensagens fictícias no MineZap, configurações, aplicativos, telefone e permissões para acessar serviços da cidade. A experiência varia conforme o aparelho.</p></article>
+<article class="feature-box"><b>📡 MineNet</b><p>Internet fictícia 2G/4G/5G e Wi-Fi, chips, roteadores, mensalidades e suspensão de serviços simulados em caso de atraso.</p></article>
+<article class="feature-box"><b>🎧 MineConnect</b><p>Ideia de voz por proximidade, chamadas e rádio de grupos. Depende de testes técnicos, especialmente para Bedrock; não é um recurso pronto.</p></article>
+<article class="feature-box"><b>🛠️ Assistência para celulares</b><p>Troca simulada de tela, bateria e armazenamento, avaliação de danos, escolha de peças e conserto com ordem de serviço.</p></article>
+</div>
+</section>
+<section class="section-space panel" id="andamento">
+<div class="eyebrow">DESENVOLVIMENTO EM ETAPAS</div><h2 class="section-title">O que vem primeiro?</h2>
+<div class="instructions"><div class="step-card"><strong>01 — Base jogável</strong><p>Mapa moderno, entrada Java e Bedrock, casas, economia, empregos e comércios.</p></div><div class="step-card"><strong>02 — Vida na cidade</strong><p>Carros, imóveis, banco e segurança básica dos prédios.</p></div><div class="step-card"><strong>03 — Tecnologia</strong><p>MineOS, MinePC, MineBook, MineTab, MinePhone, MineTech e sistemas mais avançados.</p></div></div>
+<p class="note">Nossa intenção é testar um beta em 20/03/2027, às 16h (Brasília), mas esta é uma previsão e pode mudar. Nem todos os recursos descritos estarão presentes no primeiro beta.</p>
+</section>
+
+
+<section class="panel section-space" id="apoios"><div class="eyebrow">APOIE O PROJETO</div><h2 class="section-title">Ajude a construir a MineCidade RP</h2>
+<p class="section-lead">Escolha seu apoio, faça o Pix e envie o comprovante pelo WhatsApp. O responsável vai conferir se o pagamento realmente chegou antes de atualizar a arrecadação ou entregar os benefícios.</p>
+<div class="support-options" role="group" aria-label="Escolha seu apoio">
+<button type="button" class="support-option selected" data-tier="5" aria-pressed="true"><strong>R$ 5</strong><span>💚 Apoio livre</span><small>Apoie o desenvolvimento sem benefícios exclusivos.</small></button>
+<button type="button" class="support-option" data-tier="10" aria-pressed="false"><strong>R$ 10</strong><span>🔐 Bastidores</span><small>Grupo privado para acompanhar as novidades e o progresso.</small></button>
+<button type="button" class="support-option" data-tier="20" aria-pressed="false"><strong>🎮 R$ 20</strong><span>Grupo + beta</span><small>Grupo privado e acesso ao beta quando estiver disponível; sujeito às condições de entrega.</small></button>
+</div>
+<div class="payment-box" id="pagamento">
+<span class="reward-label" id="chosenName">Apoio selecionado: R$ 5,00</span>
+<h3 style="margin-top:14px">🔑 Chave Pix (telefone)</h3>
+<div class="pix-line"><code id="pixChave">Carregando…</code><button type="button" class="btn sm" id="copiarPix">Copiar Pix</button></div>
+<p class="note" id="pixDestinatario">Confira o nome do recebedor no aplicativo antes de confirmar.</p>
+<label class="input-label" for="nick">Seu nick do Minecraft (opcional)</label>
+<input class="inp" id="nick" maxlength="32" autocomplete="off" placeholder="Ex.: Rbx_KingYT">
+<p style="margin-top:16px"><a class="btn wa" id="enviarComprovante" target="_blank" rel="noopener noreferrer" href="#pagamento">💬 Enviar comprovante pelo WhatsApp ↗</a></p>
+<p class="note">O WhatsApp abrirá com uma mensagem pronta. <strong>Anexe a imagem do comprovante na conversa.</strong> Ele não é enviado automaticamente por este site. Se necessário, oculte informações pessoais que não sejam necessárias à conferência.</p>
+<p class="note" id="whatsappLabel"></p>
+</div>
+<div class="instructions">
+<div class="step-card"><strong>1. Escolha o valor</strong><p>R$ 5, R$ 10 ou R$ 20. Confira o que cada faixa oferece.</p></div>
+<div class="step-card"><strong>2. Faça o Pix</strong><p>Copie a chave e confira os dados do recebedor no aplicativo bancário.</p></div>
+<div class="step-card"><strong>3. Envie e aguarde</strong><p>Envie o comprovante por WhatsApp. A confirmação e a entrega das recompensas são manuais.</p></div>
+</div>
+<p class="note">Atingir ou ultrapassar 100% da meta não interrompe o desenvolvimento. O acesso ao beta ainda não está liberado; prazo, entrega e eventuais reembolsos devem ser acordados antes de efetuar uma contribuição com recompensa.</p>
+</section>
+
+<div class="alert" id="transparencia"><strong>🔒 Transparência:</strong> o servidor está em desenvolvimento, e as funcionalidades apresentadas são planos, não garantias. Não envie senhas, códigos de autenticação ou dados bancários. O site não confere pagamentos automaticamente: somente os recebimentos confirmados no PicPay entram na meta. O endereço e a chave Pix são públicos nesta página.</div>
+</main><footer><span>© 2026 MineCidade RP — Projeto independente, não afiliado à Mojang ou Microsoft.</span><a class="owner-link" href="admin.html">🔐 Área do dono do servidor</a></footer></div>
 <script>
-const CAMPANHA={meta:200,arrecadado:0,apoiadores:0,prazo:"2027-03-20"};
-const fmt=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
-const percentual=CAMPANHA.arrecadado/CAMPANHA.meta*100;
-document.querySelector("#arrecadado").textContent=fmt(CAMPANHA.arrecadado);
-document.querySelector("#percentual").textContent=percentual.toLocaleString("pt-BR",{maximumFractionDigits:1})+"% da meta";
-document.querySelector("#progresso").style.width=Math.min(100,percentual)+"%";
-document.querySelector("#barra").setAttribute("aria-valuenow",String(Math.round(Math.min(100,percentual))));
-document.querySelector("#apoiadores").textContent=String(CAMPANHA.apoiadores);
-const d=new Date(CAMPANHA.prazo+"T23:59:59-03:00"),n=new Date();
-document.querySelector("#faltam").textContent=n>d?"Encerrado":String(Math.ceil((d-n)/86400000));
+
+const fallback = {meta:200,arrecadado:0,apoiadores:0,prazo:"2027-03-20",pix:"94992898196",recebedor:"Ezequiel Lucas",banco:"PicPay",whatsapp:"94991819814"};
+const fmt = v => Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+let campaign={...fallback};let currentTier=5;
+function draw(){
+  const goal=Number(campaign.meta)>0?Number(campaign.meta):200,raised=Math.max(0,Number(campaign.arrecadado)||0),pct=100*raised/goal;
+  document.querySelector("#arrecadado").textContent=fmt(raised);
+  document.querySelector("#percentual").textContent=pct.toLocaleString("pt-BR",{maximumFractionDigits:1})+"% da meta";
+  document.querySelector("#metaTxt").textContent="de "+fmt(goal);
+  document.querySelector("#progresso").style.width=Math.min(100,pct)+"%";
+  document.querySelector("#barra").setAttribute("aria-valuenow",String(Math.round(Math.min(100,pct))));
+  document.querySelector("#apoiadores").textContent=String(Math.max(0,Math.floor(Number(campaign.apoiadores)||0)));
+  const endDate = String(campaign.prazo||"2027-03-20");
+  const date = new Date(endDate+"T23:59:59-03:00");
+  const remaining=Math.ceil((date-new Date())/86400000);
+  document.querySelector("#faltam").textContent=!Number.isFinite(remaining)?"—":remaining<0?"Encerrado":String(remaining);
+  document.querySelector("#pixChave").textContent=String(campaign.pix||"Não configurado");
+  document.querySelector("#pixDestinatario").textContent="Recebedor: "+String(campaign.recebedor||"conferir no banco")+" · "+String(campaign.banco||"");
+  const ph=String(campaign.whatsapp||"").replace(/\D/g,"");
+  document.querySelector("#whatsappLabel").textContent=ph?"WhatsApp de contato: +"+(ph.startsWith("55")?ph:"55"+ph):"WhatsApp não configurado.";
+  updateWhatsApp();
+}
+function updateWhatsApp(){
+ const amount=currentTier,nick=document.querySelector("#nick").value.trim();
+ const lines=["Olá! Quero confirmar meu apoio à MineCidade RP.","Valor do apoio: "+fmt(amount),"Plano: "+({5:"Apoio livre",10:"Grupo dos bastidores",20:"Grupo dos bastidores + acesso futuro ao beta"}[amount]||"Apoio"),nick?"Meu nick: "+nick:"Vou informar meu nick do Minecraft.","Vou anexar o comprovante Pix nesta conversa. Por favor, confira o recebimento."];
+ const digits=String(campaign.whatsapp||"").replace(/\D/g,"");
+ const number=digits.startsWith("55")?digits:"55"+digits;
+ const btn=document.querySelector("#enviarComprovante");
+ btn.href=number.length>=12?"https://wa.me/"+number+"?text="+encodeURIComponent(lines.join("\n")):"#pagamento";
+ btn.setAttribute("aria-disabled",number.length>=12?"false":"true");
+}
+document.querySelectorAll(".support-option").forEach(btn=>btn.addEventListener("click",()=>{
+ currentTier=Number(btn.dataset.tier);
+ document.querySelectorAll(".support-option").forEach(b=>{const on=b===btn;b.classList.toggle("selected",on);b.setAttribute("aria-pressed",String(on))});
+ document.querySelector("#chosenName").textContent="Apoio selecionado: "+fmt(currentTier);
+ updateWhatsApp();
+ document.querySelector("#pagamento").scrollIntoView({behavior:"smooth",block:"center"});
+}));
+document.querySelector("#nick").addEventListener("input",updateWhatsApp);
+document.querySelector("#copiarPix").addEventListener("click",async()=>{
+ const key=String(campaign.pix||"").trim();if(!key)return;
+ const btn=document.querySelector("#copiarPix");
+ try{await navigator.clipboard.writeText(key);btn.textContent="✓ Copiada!";}
+ catch(e){window.prompt("Copie a chave Pix:",key);btn.textContent="Copie a chave";}
+ setTimeout(()=>btn.textContent="Copiar Pix",2600);
+});
+fetch("./data/campanha.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Arquivo indisponível");return r.json();}).then(cfg=>{
+  if(cfg && typeof cfg==="object") campaign={...fallback,...cfg};draw();
+}).catch(()=>draw());
+draw();
+
 </script>
 </body></html>
