@@ -25,6 +25,11 @@
 <p class="muted" style="margin-top:17px">Antes de registrar alguém, confirme no app bancário o valor e o identificador real da transação. Um print sozinho não comprova pagamento.</p>
 <div class="step"><strong>➕ Adicionar apoio já confirmado</strong><p class="muted">Depois de conferir no PicPay, toque no valor recebido. O total e a quantidade de apoiadores serão ajustados nos campos acima.</p>
 <div class="tally"><button type="button" data-add="5">+ R$ 5</button><button type="button" data-add="10">+ R$ 10</button><button type="button" data-add="20">+ R$ 20</button><button type="button" id="undo">Desfazer último</button></div>
+<div class="tally" style="margin-top:14px;align-items:end">
+<div class="form-field" style="width:min(210px,100%)"><label for="livreValor">Valor livre recebido (R$)</label><input type="number" id="livreValor" min="0.01" step="0.01" inputmode="decimal" placeholder="Ex.: 12,50"></div>
+<button type="button" id="addLivre">+ Registrar valor livre</button>
+</div>
+<p class="muted" id="livreStatus" role="status">Use este campo para apoios de qualquer valor, sem plano ou benefícios.</p>
 </div>
 <p>Total para publicar: <span class="money" id="preview">R$ 0,00</span> <span class="muted" id="previewPct">0% da meta</span></p>
 <div class="buttons"><button class="btn" id="copy" type="button">📋 Copiar atualização</button><a class="btn alt" id="editGitHub" target="_blank" rel="noopener" href="https://github.com/novabyte-studio-dev/minecidade-rp./edit/main/data/campanha.json">🔑 Entrar com GitHub e salvar ↗</a></div>
@@ -33,7 +38,7 @@
 <section class="box"><div class="eyebrow">COMO PUBLICAR PELO CELULAR</div><h2>Salvar os valores atualizados</h2>
 <ol>
 <li>Confira o comprovante <strong>no PicPay</strong> e confirme o recebimento.</li>
-<li>Adicione o valor usando os botões acima ou corrija os números manualmente.</li>
+<li>Adicione o valor usando os botões acima, inclusive o de <strong>valor livre</strong>, ou corrija os números manualmente.</li>
 <li>Toque em <strong>Copiar atualização</strong>.</li>
 <li>Toque em <strong>Entrar com GitHub e salvar</strong>. Faça login com a conta <strong>novabyte-studio-dev</strong>, se necessário.</li>
 <li>No editor do GitHub, apague o conteúdo de <code>data/campanha.json</code>, cole a atualização e toque em <strong>Commit changes</strong>.</li>
@@ -58,6 +63,22 @@ function redraw(){const v=values();document.getElementById("preview").textConten
 function fill(){ids.forEach(id=>document.getElementById(id).value=config[id]??"");redraw();}
 ids.forEach(id=>document.getElementById(id).addEventListener("input",redraw));
 document.querySelectorAll("button[data-add]").forEach(btn=>btn.addEventListener("click",()=>{const v=values();hist.push(v);document.getElementById("arrecadado").value=Number((v.arrecadado+Number(btn.dataset.add)).toFixed(2));document.getElementById("apoiadores").value=v.apoiadores+1;redraw();}));
+document.getElementById("addLivre").addEventListener("click",()=>{
+ const field=document.getElementById("livreValor");
+ const raw=field.value.trim(),amount=Number(raw);
+ const status=document.getElementById("livreStatus");
+ if(!raw||!Number.isFinite(amount)||amount<0.01||!Number.isSafeInteger(Math.round(amount*100))||Math.abs(amount*100-Math.round(amount*100))>1e-6){
+  status.textContent="Informe um valor válido acima de R$ 0,00, com no máximo duas casas decimais.";
+  field.focus();return;
+ }
+ const v=values();hist.push(v);
+ const cents=Math.round(v.arrecadado*100)+Math.round(amount*100);
+ document.getElementById("arrecadado").value=(cents/100).toFixed(2);
+ document.getElementById("apoiadores").value=v.apoiadores+1;
+ field.value="";
+ status.textContent="Adicionado "+money(amount)+" à prévia. Copie e publique a atualização no GitHub após confirmar o Pix.";
+ redraw();
+});
 document.getElementById("undo").addEventListener("click",()=>{const old=hist.pop();if(!old)return;ids.forEach(id=>document.getElementById(id).value=old[id]);redraw();});
 document.getElementById("copy").addEventListener("click",async()=>{const s=payload();try{await navigator.clipboard.writeText(s);document.getElementById("copyStatus").textContent="✓ Atualização copiada! Abra o GitHub, cole no arquivo e confirme o commit.";}catch(e){document.getElementById("copyStatus").textContent="Não foi possível copiar automaticamente. Selecione e copie o texto da prévia abaixo."; }});
 document.getElementById("editGitHub").href=REPO;
