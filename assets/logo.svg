@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 84" role="img" aria-labelledby="title desc">
+<title id="title">MineCidade RP</title><desc id="desc">Logotipo da MineCidade RP: uma cidade de blocos futurista em tons de ciano e verde.</desc>
+<defs><linearGradient id="a" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#16c3c0"/><stop offset="1" stop-color="#b9ff81"/></linearGradient></defs>
+<rect x="3" y="6" width="69" height="69" rx="17" fill="#0a2529" stroke="#3be4c7" stroke-opacity=".55"/>
+<path d="M11 58 37 73 64 58 38 43Z" fill="#0b4145"/><path d="m18 26 14-8 14 8-14 8Z" fill="#73ffad"/><path d="M18 26v27l14 8V34Z" fill="#128f9d"/><path d="M32 34v27l14-8V26Z" fill="#1ad7cb"/>
+<path d="m39 18 10-6 11 6-11 6Z" fill="#bbff86"/><path d="M39 18v35l10 6V24Z" fill="#1fbcae"/><path d="M49 24v35l11-7V18Z" fill="#5af8a9"/>
+<path d="M24 38h4M24 46h4M38 35h5M38 43h5M52 33h4M52 43h4" stroke="#ddfff0" stroke-width="2.8"/>
+<path d="M13 59 36 72 63 57" stroke="url(#a)" stroke-width="3.5" fill="none"/>
+<text x="86" y="43" fill="#edfdf9" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="25" letter-spacing="-.8">Mine<tspan fill="url(#a)">Cidade</tspan></text>
+<text x="88" y="61" fill="#a0c1bc" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="12" letter-spacing="4.8">ROLEPLAY</text>
+</svg>
