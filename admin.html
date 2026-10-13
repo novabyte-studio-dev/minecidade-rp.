@@ -7,13 +7,43 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@600;800&family=Inter:wght@400;600;700;800&display=swap');
 :root{color-scheme:dark;--green:#a5f966;--line:#345a54;--muted:#afc8ce}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#194a42 0%,transparent 36%),#09131c;color:#f3fcff;font:15px/1.6 Inter,Arial,sans-serif}a{color:inherit}header,main,footer{width:min(910px,calc(100% - 28px));margin:auto}header{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:20px 0}header a{color:var(--green);font-weight:800;text-decoration:none}h1,h2,h3{font-family:Oxanium,Arial,sans-serif;line-height:1.2}h1{font-size:clamp(28px,6vw,47px);margin:8px 0 12px}h1 span{color:var(--green)}h2{font-size:23px;margin:0 0 13px}p{color:var(--muted)}.box{border:1px solid var(--line);border-radius:21px;padding:25px;margin:19px 0;background:#102330}.eyebrow{color:var(--green);font-size:11px;letter-spacing:1px;font-weight:800}.alert{padding:15px;background:#193b31;border:1px solid #5a8e6a;border-radius:14px;font-size:13px;color:#e4f7e7}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.form-field label{display:block;font-size:12px;color:var(--muted);font-weight:800;margin-bottom:7px}.form-field input{width:100%;border:1px solid #517167;border-radius:11px;background:#071821;color:white;padding:12px 13px;font:inherit}.btn{border:0;border-radius:12px;padding:13px 18px;background:var(--green);font-weight:800;color:#0b271b;cursor:pointer;font:800 14px Inter,Arial,sans-serif;display:inline-block;text-decoration:none}.btn.alt{background:#23473a;border:1px solid #609273;color:#deffdf}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.muted{font-size:12px;color:var(--muted)}.money{font:800 32px Oxanium,sans-serif;color:var(--green)}.step{padding:15px;border-radius:12px;background:#0b2029;border:1px solid #355453;margin:12px 0}code,pre{word-break:break-word;color:#dcffdd}pre{font-size:12px;white-space:pre-wrap;background:#061821;border:1px solid #234039;padding:15px;border-radius:12px;max-height:300px;overflow:auto}.tally{display:flex;flex-wrap:wrap;gap:8px}.tally button{border:1px solid #6b9b75;border-radius:10px;background:#17402c;color:#e1ffe1;cursor:pointer;padding:12px 15px;font-weight:800}footer{padding:24px 0 40px;color:var(--muted);font-size:12px}strong{color:#f0fff1}ol{padding-left:22px}li{margin:10px 0}@media(max-width:600px){.grid{grid-template-columns:1fr}.box{padding:20px}}
+
+/* Bloqueio visual do editor; edição real protegida por permissões do GitHub */
+[hidden]{display:none!important}
+.gate-wrap{max-width:560px;margin:55px auto 65px}
+.gate-card{padding:30px;border:1px solid #478574;border-radius:23px;background:linear-gradient(140deg,#112f31,#0c1d2b);box-shadow:0 16px 60px #03131655}
+.gate-card h1{font-size:38px}.gate-card p{font-size:14px}
+.gate-label{display:block;font-size:13px;font-weight:800;color:#dcf4ea;margin:14px 0 8px}
+.gate-input{display:block;background:#081b25;border:1px solid #668b81;color:white;font:inherit;padding:14px 15px;width:100%;border-radius:12px;letter-spacing:1px}
+.gate-input:focus-visible,.btn:focus-visible{outline:3px solid #b0ff79;outline-offset:3px}
+.gate-submit{width:100%;margin-top:14px}
+.gate-error{min-height:24px;color:#ffa7a7;font-size:13px}
+.lock-note{font-size:12px;color:#b8ccbf;background:#1b392f;border:1px solid #345f4a;border-radius:12px;padding:13px;margin-top:18px}
+.admin-headline{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.lock-btn{border:1px solid #759383;background:#143228;color:#d8ffe2;cursor:pointer;border-radius:9px;padding:9px 13px;font-weight:800}
+@media(max-width:600px){.gate-wrap{margin:30px auto}.gate-card{padding:21px}}
 </style></head>
 <body>
 <header><strong>🏙️ MINECIDADE RP</strong><a href="./index.html">← Voltar ao site</a></header>
 <main>
-<div class="eyebrow">CONTROLE DA CAMPANHA</div><h1>Área do <span>dono</span></h1>
+<section id="loginGate" class="gate-wrap" aria-labelledby="gateTitle">
+  <div class="gate-card">
+    <div class="eyebrow">ÁREA RESTRITA — MINECIDADE RP</div>
+    <h1 id="gateTitle">Acesso do <span>dono</span> 🔐</h1>
+    <p>Digite o código para abrir o painel de edição da arrecadação.</p>
+    <form id="accessForm" autocomplete="off">
+      <label class="gate-label" for="accessCode">Código de acesso</label>
+      <input class="gate-input" type="password" id="accessCode" autocomplete="off" spellcheck="false" required placeholder="Digite seu código" aria-describedby="accessError">
+      <button class="btn gate-submit" type="submit" id="accessButton">Entrar no painel</button>
+      <p class="gate-error" id="accessError" role="status" aria-live="polite"></p>
+    </form>
+    <div class="lock-note"><strong>Segurança:</strong> este código apenas bloqueia a visualização do painel no navegador. Alterações publicadas ainda exigem entrar com sua conta GitHub autorizada. Não compartilhe seu login ou senha do GitHub.</div>
+  </div>
+</section>
+<div id="ownerContent" hidden>
+<div class="admin-headline"><div><div class="eyebrow">CONTROLE DA CAMPANHA</div><h1>Área do <span>dono</span></h1></div><button type="button" id="lockPanel" class="lock-btn">🔒 Bloquear painel</button></div>
 <p>Registre apenas os apoios confirmados no PicPay. Esta página é um editor local dos dados públicos da arrecadação; o salvamento é feito com o login do seu GitHub.</p>
-<div class="alert"><b>🔐 Como funciona o acesso?</b> O GitHub verifica sua conta e só permite salvar no repositório se você tiver permissão. Esta página <b>não pede nem armazena senhas</b>. Mesmo que outras pessoas abram este endereço, elas não conseguem modificar os dados oficiais sem acesso ao repositório.</div>
+<div class="alert"><b>🔐 Como funciona o acesso?</b> O código libera somente a interface do painel. Para publicar uma alteração, é obrigatório entrar com uma conta do GitHub com permissão de escrita no repositório. O código sozinho <b>não</b> dá poder de editar; esta página não solicita nem guarda a senha do GitHub.</div>
 <section class="box">
 <div class="eyebrow">CAMPANHA PUBLICADA</div><h2>Dados de arrecadação</h2>
 <div class="grid">
@@ -49,9 +79,47 @@
 <section class="box"><div class="eyebrow">LEMBRETE DE SEGURANÇA</div><h2>Comprovantes não ficam públicos</h2>
 <p>Não salve nomes, telefones de apoiadores, prints de Pix, senhas, dados bancários, documentos ou códigos de autenticação no GitHub. Guarde a conferência de cada recebimento em local privado e mantenha um responsável adulto acompanhando os pagamentos.</p>
 <p>Benefícios do grupo e do beta são entregues manualmente, depois da confirmação e conforme as condições anunciadas.</p></section>
+</div>
 </main>
-<footer>MineCidade RP · Painel de edição de dados públicos, protegido por permissões de gravação do GitHub.</footer>
+<footer>MineCidade RP · Painel protegido de verdade pelas permissões de gravação do GitHub.</footer>
 <script>
+// Esta verificação local é apenas uma barreira visual; não substitui autenticação no servidor.
+const CODE_DIGEST = "a3fe37485ec1bdf5449199816e38e74af9e916901104184accde320575f50a69";
+const loginGate=document.getElementById("loginGate");
+const ownerContent=document.getElementById("ownerContent");
+const gateForm=document.getElementById("accessForm");
+const codeInput=document.getElementById("accessCode");
+const codeError=document.getElementById("accessError");
+const submitButton=document.getElementById("accessButton");
+gateForm.addEventListener("submit", async e=>{
+ e.preventDefault();
+ submitButton.disabled=true;
+ codeError.textContent="";
+ try {
+  // Hash para não deixar o código em texto puro. O JS e a verificação são públicos.
+  const bytes=new TextEncoder().encode(codeInput.value);
+  const digest=await crypto.subtle.digest("SHA-256",bytes);
+  const hex=Array.from(new Uint8Array(digest),v=>v.toString(16).padStart(2,"0")).join("");
+  codeInput.value="";
+  if(hex!==CODE_DIGEST){
+   codeError.textContent="Código incorreto. Tente novamente.";
+   codeInput.focus();
+   return;
+  }
+  loginGate.hidden=true;
+  ownerContent.hidden=false;
+  document.querySelector("#meta").focus();
+ }catch(err){codeError.textContent="Não foi possível verificar o código neste navegador. Abra pelo endereço HTTPS do site.";}
+ finally{submitButton.disabled=false;}
+});
+document.getElementById("lockPanel").addEventListener("click",()=>{
+ ownerContent.hidden=true;
+ loginGate.hidden=false;
+ codeInput.value="";
+ codeError.textContent="";
+ codeInput.focus();
+ window.scrollTo({top:0,behavior:"smooth"});
+});
 const REPO="https://github.com/novabyte-studio-dev/minecidade-rp./edit/main/data/campanha.json";
 let config={projeto:"MineCidade RP",meta:200,arrecadado:0,apoiadores:0,prazo:"2027-03-20",atualizadoEm:"",pix:"94992898196",recebedor:"Ezequiel Lucas",banco:"PicPay",whatsapp:"94992898196",aviso:"Os valores são informados manualmente pelo responsável depois de confirmar cada pagamento no aplicativo bancário. Comprovantes não são enviados ou armazenados neste site."};
 let hist=[];
